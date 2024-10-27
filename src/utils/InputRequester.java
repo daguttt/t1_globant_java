@@ -160,10 +160,33 @@ public class InputRequester {
 
     // Index from a string list
     public static int requestAnIndexFrom(List<String> optionsList, String prompt) {
-        return requestAnIndexFrom(optionsList, prompt, "Número de opción inválida. Inténtalo de nuevo");
+        return requestAnIndexFrom(optionsList, prompt, "Número de opción inválida. Inténtalo de nuevo", false);
     }
 
-    public static int requestAnIndexFrom(List<String> optionsList, String prompt, String invalidInputMessage) {
+    /**
+     * Shows a dialog asking the user to choose an option from a list.
+     *
+     * @param optionsList The list of options to choose from.
+     * @param prompt The prompt to show above the list of options.
+     * @param allowEmpty If true, the user is allowed to press enter to cancel the request.
+     * @return The index of the option chosen by the user, or -1 if the user
+     *         canceled the request.
+     */
+    public static int requestAnIndexFrom(List<String> optionsList, String prompt, boolean allowEmpty) {
+        return requestAnIndexFrom(optionsList, prompt, "Número de opción inválida. Inténtalo de nuevo", allowEmpty);
+    }
+
+
+    /**
+     * Shows a dialog asking the user to choose an option from a list.
+     *
+     * @param optionsList The list of options to choose from.
+     * @param prompt The prompt to show above the list of options.
+     * @param invalidInputMessage The message to show if the user enters an invalid option.
+     * @param allowEmpty If true, the user is allowed to press enter to cancel the request.
+     * @return The index of the chosen option, or -1 if the user entered an empty string and allowEmpty is true.
+     */
+    public static int requestAnIndexFrom(List<String> optionsList, String prompt, String invalidInputMessage, boolean allowEmpty) {
         var formattedOptions = new ArrayList<String>();
         for (int i = 0; i < optionsList.size(); i++) {
             String option = optionsList.get(i);
@@ -172,7 +195,7 @@ public class InputRequester {
         }
 
         while (true) {
-            var chosenOption = requestInteger(prompt + "\n" + String.join("\n", formattedOptions));
+            var chosenOption = requestInteger(prompt + "\n" + String.join("\n", formattedOptions), allowEmpty);
             if (chosenOption.isEmpty()) return -1;
 
             boolean isValidOption = chosenOption.get() > 0 && chosenOption.get() <= optionsList.size();
