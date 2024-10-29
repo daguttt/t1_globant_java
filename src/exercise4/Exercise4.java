@@ -35,6 +35,15 @@ public class Exercise4 {
                 case "0" -> isMenuOpened = false;
                 case "1" -> {
                     String name = InputRequester.requestString("Ingresa el nombre del producto:");
+
+                    // Validate name uniqueness
+                    Optional<Product> foundProduct = productList.stream().filter(product -> product.name().equals(name)).findFirst();
+
+                    if (foundProduct.isPresent()) {
+                        JOptionPane.showMessageDialog(null, "El producto ya existe. Inténtalo de nuevo.");
+                        break;
+                    }
+
                     double price = InputRequester.requestDouble("Ingresa el precio del producto").orElseThrow();
                     int stock = InputRequester.requestInteger("Ingresa el stock del producto").orElseThrow();
                     Product newProduct = new Product(name, price, stock);
