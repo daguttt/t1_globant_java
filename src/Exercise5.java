@@ -6,7 +6,7 @@ import utils.InputRequester;
 
 import javax.swing.*;
 
-public class exercise5 {
+public class Exercise5 {
     public record User(String name, String password, String email) {
         @Override
         public String toString() {
@@ -15,17 +15,6 @@ public class exercise5 {
     }
 
     public static void main(String[] args) {
-        /*
-        Wording:
-        Desarrolla un sistema de registro para nuevos usuarios de una aplicación.
-        Instrucciones:
-        1. 2. 3. Solicita al usuario que ingrese un nombre de usuario, una contraseña y su
-        correo electrónico.
-        Valida que la contraseña tenga al menos 8 caracteres, contenga al menos
-        una letra mayúscula y un número.
-        Almacena los usuarios registrados en un ArrayList y muestra la lista al final.
-        * */
-
         boolean shouldContinueAsking = true;
         ArrayList<User> users = new ArrayList<>();
 
