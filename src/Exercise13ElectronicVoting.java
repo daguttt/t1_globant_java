@@ -13,7 +13,7 @@ import utils.InputRequester;
  * 3. Muestra los resultados de la votación al final, indicando quién ganó.
  */
 
-public class Exercise13 {
+public class Exercise13ElectronicVoting {
   public static void main(String[] args) {
     String[] candidates = { "Diego", "Juan", "Maria" };
     int[] votes = new int[candidates.length];
