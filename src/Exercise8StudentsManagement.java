@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.swing.JOptionPane;
 import utils.InputRequester;
 
-public class Exercise8 {
+public class Exercise8StudentsManagement {
   private record Student(String name, double average) {
   }
 
