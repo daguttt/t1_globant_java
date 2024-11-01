@@ -14,7 +14,7 @@
 import javax.swing.JOptionPane;
 import utils.InputRequester;
 
-public class Exercise10 {
+public class Exercise10SurveySatisfaction {
   private static final int NUMBER_OF_CLIENTS = 10;
   private static final Integer[] satisfactionScores = new Integer[NUMBER_OF_CLIENTS];
 
